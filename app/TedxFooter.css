@@ -1,0 +1,89 @@
+.tedx-footer {
+  background: #000;
+  color: #fff;
+  width: 100%;
+}
+
+.tedx-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 60px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.tedx-brand h2 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.tedx-brand h2 span {
+  color: #e62b1e;
+}
+
+.tedx-brand p {
+  margin-top: 16px;
+  font-size: 17px;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.tedx-links h3,
+.tedx-social h3 {
+  margin-bottom: 16px;
+}
+
+.tedx-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tedx-links li {
+  margin-bottom: 10px;
+}
+
+.tedx-links a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.tedx-links a:hover {
+  color: #e62b1e;
+}
+
+.tedx-social .icons {
+  display: flex;
+  gap: 14px;
+}
+
+.tedx-social a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: 0.3s;
+}
+
+.tedx-social a:hover {
+  background: #e62b1e;
+  transform: scale(1.1);
+}
+
+.tedx-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 24px;
+  text-align: center;
+  font-size: 16px;
+  color: #aaa;
+}
+.icons{
+    display: flex;
+    gap: 14px;
+    margin-left: 55px;
+    font-size: large;
+}
