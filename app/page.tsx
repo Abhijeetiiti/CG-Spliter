@@ -196,7 +196,8 @@ export default function Home() {
 
     
   </div>
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 mb-15">
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 mb-15git remote add origin https://github.com/abhijeetiiti1-glitch/CG-Spliter.git
+">
    <GroupMemberCard
   member={{
     id: "1",
