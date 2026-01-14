@@ -3,7 +3,7 @@ import "./TedxFooter.css";
 
 export default function TedxFooter() {
   return (
-    <footer className="tedx-footer">
+    <footer className="tedx-footer mt-10">
       <div className="tedx-container">
         
         <div className="tedx-brand">
