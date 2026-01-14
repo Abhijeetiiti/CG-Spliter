@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 
 interface RecentExpense {
   id: string;
@@ -17,12 +17,6 @@ interface RecentExpense {
 }
 
 const RecentExpenses = () => {
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
-
   const recentExpenses: RecentExpense[] = [
     {
       id: "1",
@@ -67,7 +61,7 @@ const RecentExpenses = () => {
       splitCount: 8,
     },
     {
-      id: "4", // ✅ fixed duplicate id
+      id: "4",
       description: "Shopping",
       amount: 500,
       category: "travel",
@@ -83,14 +77,14 @@ const RecentExpenses = () => {
   ];
 
   const formatDate = (dateString: string) => {
-    if (!isHydrated) return "";
     const date = new Date(dateString);
     const today = new Date();
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
 
     if (date.toDateString() === today.toDateString()) return "Today";
-    if (date.toDateString() === yesterday.toDateString()) return "Yesterday";
+    if (date.toDateString() === yesterday.toDateString())
+      return "Yesterday";
 
     return date.toLocaleDateString("en-US", {
       month: "short",
@@ -98,18 +92,10 @@ const RecentExpenses = () => {
     });
   };
 
-  if (!isHydrated) {
-    return (
-      <div className="bg-card rounded-lg shadow-soft p-6">
-        <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-muted rounded w-1/3" />
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="h-20 bg-muted rounded" />
-          ))}
-        </div>
-      </div>
-    );
-  }
+  const totalAmount = useMemo(
+    () => recentExpenses.reduce((sum, exp) => sum + exp.amount, 0),
+    [recentExpenses]
+  );
 
   return (
     <div className="bg-card rounded-lg shadow-soft p-6 space-y-4">
@@ -152,12 +138,7 @@ const RecentExpenses = () => {
       <div className="pt-4 border-t border-border">
         <div className="flex items-center justify-between text-sm">
           <span className="text-muted-foreground">Total this week</span>
-          <span className="font-bold">
-            ₹
-            {recentExpenses
-              .reduce((sum, exp) => sum + exp.amount, 0)
-              .toFixed(2)}
-          </span>
+          <span className="font-bold">₹{totalAmount.toFixed(2)}</span>
         </div>
       </div>
     </div>

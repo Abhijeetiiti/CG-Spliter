@@ -1,4 +1,5 @@
 "use client";
+
 import { PieChart, Pie, Cell } from "recharts";
 import type { PieLabelRenderProps } from "recharts";
 
@@ -31,15 +32,15 @@ const renderLabel = ({
   midAngle,
   innerRadius,
   outerRadius,
-  name,
-  value,
-}: PieLabelRenderProps & ChartData) => {
+  payload,
+}: PieLabelRenderProps) => {
   const RADIAN = Math.PI / 180;
-  const radius =
-    innerRadius! + (outerRadius! - innerRadius!) * 0.6;
 
-  const x = cx! + radius * Math.cos(-midAngle! * RADIAN);
-  const y = cy! + radius * Math.sin(-midAngle! * RADIAN);
+  const radius =
+    (innerRadius ?? 0) + ((outerRadius ?? 0) - (innerRadius ?? 0)) * 0.6;
+
+  const x = (cx ?? 0) + radius * Math.cos(-midAngle! * RADIAN);
+  const y = (cy ?? 0) + radius * Math.sin(-midAngle! * RADIAN);
 
   return (
     <text
@@ -50,30 +51,32 @@ const renderLabel = ({
       dominantBaseline="central"
       style={{ fontSize: 12, fontWeight: 600 }}
     >
-      <tspan x={x} dy="-0.2em">{name}</tspan>
-      <tspan x={x} dy="1.2em">₹{value}</tspan>
+      <tspan x={x} dy="-0.2em">{payload?.name}</tspan>
+      <tspan x={x} dy="1.2em">₹{payload?.value}</tspan>
     </text>
   );
 };
 
 export default function PieWithLabels() {
   return (
-    <PieChart width={350} height={350}>
-      <Pie
-        data={data}
-        cx="50%"
-        cy="50%"
-        outerRadius={120}
-        dataKey="value"
-        label={renderLabel}
-      >
-        {data.map((_, index) => (
-          <Cell
-            key={index}
-            fill={COLORS[index % COLORS.length]}
-          />
-        ))}
-      </Pie>
-    </PieChart>
+    <div className="flex justify-center items-center">
+      <PieChart width={350} height={350}>
+        <Pie
+          data={data}
+          cx="50%"
+          cy="50%"
+          outerRadius={120}
+          dataKey="value"
+          label={renderLabel}
+        >
+          {data.map((_, index) => (
+            <Cell
+              key={`cell-${index}`}
+              fill={COLORS[index % COLORS.length]}
+            />
+          ))}
+        </Pie>
+      </PieChart>
+    </div>
   );
 }

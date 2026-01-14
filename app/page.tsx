@@ -1,15 +1,14 @@
-import PieWithImage from "./PieWithImage";
-import ExpenseForm from "./ExpenseItem";
-import RecentExpenses from "./RecentExpense";
-import MemberCard from "./MemberCard";
-import RadialBarChartExample from "./RadialBarChartExample";
-import GradientText from "./GradientText";
-import AngleCircle from "./AngleCircle";
+import PieWithImage from "./components/PieWithImage";
+import ExpenseForm from "./components/ExpenseItem";
+import RecentExpenses from "./components/RecentExpense";
+import RadialBarChartExample from "./components/RadialBarChartExample";
+import GradientText from "./components/GradientText";
+import AngleCircle from "./components/AngleCircle";
 import React from "react";
-import SettlementHistory from "./SettlementHistroy.tsx";
-import StatsCards from "./StatsCard.tsx";
-import GroupMemberCard from "./MemberCard";
-import TedxFooter from "./TedxFooter";
+import SettlementHistory from "./components/SettlementHistroy";
+import StatsCards from "./components/StatsCard.tsx";
+import GroupMemberCard from "./components/MemberCard";
+import TedxFooter from "./components/TedxFooter";
 export default function Home() {
   return (
     <>
