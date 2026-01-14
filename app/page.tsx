@@ -6,7 +6,7 @@ import GradientText from "./components/GradientText";
 import AngleCircle from "./components/AngleCircle";
 import React from "react";
 import SettlementHistory from "./components/SettlementHistroy";
-import StatsCards from "./components/StatsCard.tsx";
+import StatsCards from "./components/StatsCard";
 import GroupMemberCard from "./components/MemberCard";
 import TedxFooter from "./components/TedxFooter";
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
    
       <div className="flex items-center gap-8">
         <h1 className="text-2xl font-semibold pl-25"><GradientText
-  colorse={["red", "orange", "yellow", "green", ]}
+  colors={["red", "orange", "yellow", "green", ]}
   className="custom-class"
 >CG Splitter
 </GradientText></h1>
@@ -56,12 +56,15 @@ export default function Home() {
 
 <div className="px-10 mt-10">
   <h1 className="font-bold font-black text-5xl"> Namaste Abhijeet</h1>
-  <p className="text-xl">Here is Today's Summary</p>
+  <p className="text-xl">Here is Today Summary</p>
 <StatsCards />
 </div>
 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
  <div className="bg-gray-200 p-4 rounded shadow w-md ml-20"> <RecentExpenses /></div>
-  <div className="bg-blue-50 p-4 rounded shadow w-md ml-10"><ExpenseForm /></div>
+<div className="bg-blue-50 p-4 rounded shadow w-full">
+  <ExpenseForm />
+</div>
+
 <div className="bg-blue-50 p-4 rounded shadow w-md "> <SettlementHistory
   data={[
     {
