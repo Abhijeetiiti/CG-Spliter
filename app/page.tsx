@@ -1,5 +1,5 @@
 import PieWithImage from "./components/PieWithImage";
-import ExpenseForm from "./components/ExpenseItem";
+import ExpenseForm from "./components/ExpenseForm";
 import RecentExpenses from "./components/RecentExpense";
 import RadialBarChartExample from "./components/RadialBarChartExample";
 import GradientText from "./components/GradientText";
@@ -9,6 +9,8 @@ import SettlementHistory from "./components/SettlementHistroy";
 import StatsCards from "./components/StatsCard";
 import GroupMemberCard from "./components/MemberCard";
 import TedxFooter from "./components/TedxFooter";
+
+
 export default function Home() {
   return (
     <>
@@ -62,7 +64,20 @@ export default function Home() {
 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
  <div className="bg-gray-200 p-4 rounded shadow w-md ml-20"> <RecentExpenses /></div>
 <div className="bg-blue-50 p-4 rounded shadow w-full">
-  <ExpenseForm />
+ 
+<ExpenseForm
+Members={[
+  { id: "1", name: "Abhijeet" },
+  { id: "2", name: "Abhay" },
+  { id: "3", name: "Kedar" },
+  { id: "4", name: "Veer" },
+  { id: "5", name: "Abhishek" },
+  { id: "6", name: "Abhi" },
+  { id: "7", name: "Mithlesh" },
+  { id: "8", name: "Abhimanyu" },
+]}
+/>
+
 </div>
 
 <div className="bg-blue-50 p-4 rounded shadow w-md "> <SettlementHistory
