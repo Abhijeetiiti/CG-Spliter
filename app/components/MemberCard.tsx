@@ -63,7 +63,7 @@ export default function GroupMemberCard({
       </div>
 
       
-      <button className="mt-4  w-full text-sm font-medium text-blue-600 hover:underline">
+      <button className="mt-4 bg-green-500 text-black px-4 ml-35 py-2 rounded-full font-semibold hover:bg-red-500 transition">
         View Details
       </button>
     </div>

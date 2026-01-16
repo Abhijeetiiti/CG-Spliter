@@ -11,13 +11,11 @@ import GroupMemberCard from "./components/MemberCard";
 import TedxFooter from "./components/TedxFooter";
 
 
+
 export default function Home() {
   return (
     <>
-  
     <nav className="w-full bg-black text-white px-6 py-4 flex items-center justify-between">
-      
-   
       <div className="flex items-center gap-8">
         <h1 className="text-2xl font-semibold pl-25"><GradientText
   colors={["red", "orange", "yellow", "green", ]}
@@ -55,6 +53,8 @@ export default function Home() {
 </div>
       </div>
     </nav>
+
+ 
 
 <div className="px-10 mt-10">
   <h1 className="font-bold font-black text-5xl"> Namaste Abhijeet</h1>
@@ -240,9 +240,10 @@ Members={[
   }}
 />
 
-    
   </div>
       <TedxFooter />
+
+    
     </>
 
   );
