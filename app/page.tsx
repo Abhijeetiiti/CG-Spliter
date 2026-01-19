@@ -135,7 +135,7 @@ export default function Home() {
       <RadialBarChartExample />
     </div>
     <div className="flex justify-center  bg-white p-4 rounded shadow">
-      <AngleCircle percentage={72} />
+      <AngleCircle />
     </div>
   </div>
    <h1 className="text-5xl text-center mt-10 font-bold">Group Member</h1>
