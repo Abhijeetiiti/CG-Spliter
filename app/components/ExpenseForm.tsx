@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 
-interface ExpenseData {
+ export interface ExpenseData {
   description: string;
   amount: string;
   paidBy: string;
@@ -37,12 +37,12 @@ const ExpenseForm = ({ onSubmit, onChange }: ExpenseFormProps) => {
     description: "",
     amount: "",
     paidBy: "",
-    splitWith: members.map(m => m.id), // Default to splitting with everyone
+    splitWith: members.map(m => m.id), 
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof ExpenseData, string>>>({});
 
-  // Fixed handleChange to handle union types correctly
+
   const handleChange = (field: keyof ExpenseData, value: string | string[]) => {
     const newData = { ...formData, [field]: value };
     setFormData(newData);
@@ -83,7 +83,6 @@ const ExpenseForm = ({ onSubmit, onChange }: ExpenseFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow p-6 space-y-6">
-      {/* Description */}
       <div>
         <label className="block text-lg font-semibold mb-2">Description *</label>
         <input
@@ -95,7 +94,6 @@ const ExpenseForm = ({ onSubmit, onChange }: ExpenseFormProps) => {
         {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
       </div>
 
-      {/* Amount */}
       <div>
         <label className="block text-lg font-semibold mb-2">Amount *</label>
         <input
@@ -108,7 +106,6 @@ const ExpenseForm = ({ onSubmit, onChange }: ExpenseFormProps) => {
         {errors.amount && <p className="text-red-500 text-sm mt-1">{errors.amount}</p>}
       </div>
 
-      {/* Who Paid */}
       <div>
         <label className="block text-lg font-semibold mb-2">Who Paid *</label>
         <select
@@ -124,7 +121,7 @@ const ExpenseForm = ({ onSubmit, onChange }: ExpenseFormProps) => {
         {errors.paidBy && <p className="text-red-500 text-sm mt-1">{errors.paidBy}</p>}
       </div>
 
-      {/* Split With */}
+   
       <div>
         <label className="block text-lg font-semibold mb-2">Split With *</label>
         <div className="grid grid-cols-2 gap-3">

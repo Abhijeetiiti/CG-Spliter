@@ -17,6 +17,7 @@ interface RecentExpense {
 }
 
 const RecentExpenses = () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const recentExpenses: RecentExpense[] = [
     {
       id: "1",
@@ -27,7 +28,7 @@ const RecentExpenses = () => {
       paidBy: {
         name: "Abhijeet",
         avatar:
-          "https://img.rocket.new/generatedImages/rocket_gen_img_116ebc879-1763295731902.png",
+          "avatars/Abhijeet.jpeg",
         alt: "Abhijeet avatar",
       },
       splitCount: 8,
@@ -41,7 +42,7 @@ const RecentExpenses = () => {
       paidBy: {
         name: "Veer",
         avatar:
-          "https://img.rocket.new/generatedImages/rocket_gen_img_1811b6629-1763294904146.png",
+          "avatars/Veer.jpeg",
         alt: "Veer avatar",
       },
       splitCount: 2,
@@ -55,7 +56,7 @@ const RecentExpenses = () => {
       paidBy: {
         name: "Veer",
         avatar:
-          "https://images.unsplash.com/photo-1646324799589-4eaa88a9a82a",
+          "avatars/Veer.jpeg",
         alt: "Veer avatar",
       },
       splitCount: 8,
@@ -69,7 +70,7 @@ const RecentExpenses = () => {
       paidBy: {
         name: "Milthlesh",
         avatar:
-          "https://images.unsplash.com/photo-1646324799589-4eaa88a9a82a",
+          "avatars/Mithlesh.jpeg",
         alt: "Milthlesh avatar",
       },
       splitCount: 8,

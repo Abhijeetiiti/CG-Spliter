@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+"use client";
 import PieWithImage from "./components/PieWithImage";
 import ExpenseForm from "./components/ExpenseForm";
 import RecentExpenses from "./components/RecentExpense";
@@ -9,10 +11,19 @@ import SettlementHistory from "./components/SettlementHistroy";
 import StatsCards from "./components/StatsCard";
 import GroupMemberCard from "./components/MemberCard";
 import TedxFooter from "./components/TedxFooter";
+import type { ExpenseData } from "./components/ExpenseForm";
 
 
 
 export default function Home() {
+  function handleSubmit(expense: ExpenseData): void {
+    console.log("Submitted expense:", expense);
+  }
+
+  function handleChange(data: Partial<ExpenseData>): void {
+    console.log("Form changed:", data);
+  }
+
   return (
     <>
     <nav className="w-full bg-black text-white px-6 py-4 flex items-center justify-between">
@@ -66,17 +77,10 @@ export default function Home() {
 <div className="bg-blue-50 p-4 rounded shadow w-full">
  
 <ExpenseForm
-Members={[
-  { id: "1", name: "Abhijeet" },
-  { id: "2", name: "Abhay" },
-  { id: "3", name: "Kedar" },
-  { id: "4", name: "Veer" },
-  { id: "5", name: "Abhishek" },
-  { id: "6", name: "Abhi" },
-  { id: "7", name: "Mithlesh" },
-  { id: "8", name: "Abhimanyu" },
-]}
+  onSubmit={handleSubmit}
+  onChange={handleChange}
 />
+
 
 </div>
 
