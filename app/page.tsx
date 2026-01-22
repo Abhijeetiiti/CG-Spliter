@@ -1,254 +1,97 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
-import PieWithImage from "./components/PieWithImage";
-import ExpenseForm from "./components/ExpenseForm";
-import RecentExpenses from "./components/RecentExpense";
-import RadialBarChartExample from "./components/RadialBarChartExample";
-import GradientText from "./components/GradientText";
-import AngleCircle from "./components/AngleCircle";
-import React from "react";
-import SettlementHistory from "./components/SettlementHistroy";
-import StatsCards from "./components/StatsCard";
-import GroupMemberCard from "./components/MemberCard";
-import TedxFooter from "./components/TedxFooter";
-import type { ExpenseData } from "./components/ExpenseForm";
+"use client"
 
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  function handleSubmit(expense: ExpenseData): void {
-    console.log("Submitted expense:", expense);
-  }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  function handleChange(data: Partial<ExpenseData>): void {
-    console.log("Form changed:", data);
-  }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (email && password) {
+      router.push("/home");  
+    } else {
+      alert("Please fill in both email and password");
+    }
+  };
+
 
   return (
-    <>
-    <nav className="w-full bg-black text-white px-6 py-4 flex items-center justify-between">
-      <div className="flex items-center gap-8">
-        <h1 className="text-2xl font-semibold pl-25"><GradientText
-  colors={["red", "orange", "yellow", "green", ]}
-  className="custom-class"
->CG Splitter
-</GradientText></h1>
+    <div className="container">
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <div className="login-box">
+          <h2 className="text-3xl font-bold mb-6 text-center">LOGIN</h2>
 
-        <ul className="hidden md:flex gap-6 text-sm font-medium pr-25">
-          <li className="cursor-pointer hover:bg-gray-500 hover:px-4 py-2 rounded-full font-bold  ">Home</li>
-          <li className="cursor-pointer hover:bg-gray-500 hover:px-4 py-2 rounded-full font-bold">Spliter</li>
-          <li className="cursor-pointer hover:bg-gray-500 hover:px-4 py-2 rounded-full font-bold">Members</li>
-          <li className="cursor-pointer hover:bg-gray-500 hover:px-4 py-2 rounded-full font-bold flex items-center gap-1">
-            About
-            <span className="text-xs">▾</span>
-            
-          </li>
-          
-        </ul>
-      </div>
+          <p className="text-center text-gray-600 mb-4">
+            Welcome back! Please sign in to your account.
+          </p>
 
-    
-      <div className="flex items-center gap-5 text-sm font-medium pr-20">
-        <div className="hidden md:flex font-bold items-center gap-1 cursor-pointer hover:bg-gray-500 hover:px-4 py-2 rounded-full">
-          🌐 <span>EN</span>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <input
+                type="email"
+                className="w-full px-3 py-2 border rounded"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="mb-6">
+              <input
+                type="password"
+                className="w-full px-3 py-2 border rounded"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+
+              <div className="flex justify-end mt-2">
+                <a href="#" className="text-black hover:underline ml-2.5">
+                  Forgot Password?
+                </a>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-cyan-500 text-black text-xl font-bold py-2 rounded hover:bg-green-600 transition"
+            >
+              Sign In
+            </button>
+
+            <button
+              type="button"
+              className="flex items-center justify-center gap-3 w-full mt-4
+              bg-white/40 backdrop-blur-md border border-white/30
+              py-2 rounded-md hover:bg-white/60 transition"
+            >
+              <img
+                src="https://developers.google.com/identity/images/g-logo.png"
+                alt="Google"
+                className="w-5 h-5"/>
+              <span className="text-black font-medium">
+                Sign in with Google
+              </span>
+            </button>
+
+            <div className="mt-4 text-center">
+              <h1>
+                Don't have an account?
+                <a className="text-green-500 hover:underline hover:text-red-500 ml-1">
+                  Sign Up
+                </a>
+              </h1>
+            </div>
+          </form>
         </div>
-        <span className="cursor-pointer font-bold hover:bg-gray-500 hover:px-4 py-2 rounded-full">Help</span>
-        <span className="bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-green-500 transition">Log in</span>
-
-        <button className="bg-white text-black px-4 py-2 rounded-full font-semibold hover:bg-red-500 transition">
-          Sign up
-        </button>
-       <div className="w-11 h-11 rounded-full overflow-hidden border">
-  <img
-    src="/avatars/Abhijeet.jpeg"alt="Profile"className="w-full h-full object-cover"/>
-</div>
       </div>
-    </nav>
-
- 
-
-<div className="px-10 mt-10">
-  <h1 className="font-bold font-black text-5xl"> Namaste Abhijeet</h1>
-  <p className="text-xl">Here is Today Summary</p>
-<StatsCards />
-</div>
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
- <div className="bg-gray-200 p-4 rounded shadow w-md ml-20"> <RecentExpenses /></div>
-<div className="bg-blue-50 p-4 rounded shadow w-full">
- 
-<ExpenseForm
-  onSubmit={handleSubmit}
-  onChange={handleChange}
-/>
-
-
-</div>
-
-<div className="bg-blue-50 p-4 rounded shadow w-md "> <SettlementHistory
-  data={[
-    {
-      id: "1",
-      from: { name: "Kedar", avatar: "/avatars/kedar.jpeg" },
-      to: { name: "Abhijeet", avatar: "/avatars/Abhijeet.jpeg" },
-      amount: 350,
-      date: "14 Jan 2026",
-      group: "College Trip",
-      method: "UPI",
-    },
-    {
-      id: "2",
-      from: { name: "Abhishek", avatar: "/avatars/Abhishek.jpeg" },
-      to: { name: "Mithlesh", avatar: "/avatars/Mithlesh.jpeg" },
-      amount: 120,
-      date: "10 Jan 2026",
-      group: "Food Split",
-      method: "Cash",
-    },
-      {
-      id: "1",
-      from: { name: "Abhi", avatar: "/avatars/Abhi.jpeg" },
-      to: { name: "Veer", avatar: "/avatars/Veer.jpeg" },
-      amount: 550,
-      date: "14 Jan 2026",
-      group: " Trip",
-      method: "UPI",
-    },
-    {
-      id: "2",
-      from: { name: "Abhishek", avatar: "/avatars/Abhishek.jpeg" },
-      to: { name: "Abhay", avatar: "/avatars/Abhay.jpg" },
-      amount: 120,
-      date: "10 Jan 2026",
-      group: "Food Split",
-      method: "Cash",
-    },
-  ]}
-/></div>
-
- <div></div>
-</div>
-  <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div className="bg-white p-4 rounded shadow">
-      <PieWithImage />
     </div>
-    <div className="bg-white p-4 rounded shadow">
-      <RadialBarChartExample />
-    </div>
-    <div className="flex justify-center  bg-white p-4 rounded shadow">
-      <AngleCircle />
-    </div>
-  </div>
-   <h1 className="text-5xl text-center mt-10 font-bold">Group Member</h1>
-  <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-   <GroupMemberCard
-  member={{
-    id: "1",
-    name: "Abhijeet",
-    email: "abhijeet@example.com",
-    avatar: "/avatars/abhijeet.jpeg",
-    paid: 150,
-    owed: 120,
-    expenses: 5,
-  }}
-/>
-
-<GroupMemberCard
-  member={{
-    id: "2",
-    name: "Abhay",
-    email: "abhay@example.com",
-    avatar: "/avatars/abhay.jpg",
-    paid: 200,
-    owed: 250,
-    expenses: 3,
-  }}
-/>
-
-<GroupMemberCard
-  member={{
-    id: "3",
-    name: "Kedar",
-    email: "kedar@example.com",
-    avatar: "/avatars/kedar.jpeg",
-    paid: 100,
-    owed: 100,
-    expenses: 2,
-  }}
-/>
-
-    
-  </div>
-    <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-   <GroupMemberCard
-  member={{
-    id: "1",
-    name: "Veer",
-    email: "Veer@example.com",
-    avatar: "/avatars/Veer.jpeg",
-    paid: 550,
-    owed: 600,
-    expenses: 5,
-  }}
-/>
-
-<GroupMemberCard
-  member={{
-    id: "2",
-    name: "Abhishek",
-    email: "Abhi@example.com",
-    avatar: "/avatars/Abhishek.jpeg",
-    paid: 200,
-    owed: 450,
-    expenses: 3,
-  }}
-/>
-
-<GroupMemberCard
-  member={{
-    id: "3",
-    name: "AbhijeetK",
-    email: "Abhi@example.com",
-    avatar: "/avatars/Abhi.jpeg",
-    paid: 100,
-    owed: 700,
-    expenses: 2,
-  }}
-/>
-
-    
-  </div>
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 mb-15git remote add origin https://github.com/abhijeetiiti1-glitch/CG-Spliter.git
-">
-   <GroupMemberCard
-  member={{
-    id: "1",
-    name: "Mithlesh",
-    email: "Mithlesh@example.com",
-    avatar: "/avatars/Mithlesh.jpeg",
-    paid: 550,
-    owed: 600,
-    expenses: 5,
-  }}
-/>
-
-
-<GroupMemberCard
-  member={{
-    id: "3",
-    name: "Abhimanyu",
-    email: "Abhimanyu@example.com",
-    avatar: "/avatars/Abhimanyu.jpeg",
-    paid: 100,
-    owed: 700,
-    expenses: 2,
-  }}
-/>
-
-  </div>
-      <TedxFooter />
-
-    
-    </>
-
   );
 }
