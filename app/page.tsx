@@ -21,8 +21,8 @@ export default function Home() {
 
 
   return (
-    <div className="container">
-      <div className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat">
+    <div className="min-h-screen bg-[url('/imag.avif')] bg-cover bg-center bg-no-repeat">
+    <div className="flex flex-col items-center justify-center min-h-screen">
         <div className="login-box">
           <h2 className="text-3xl font-bold mb-6 text-center">LOGIN</h2>
 
