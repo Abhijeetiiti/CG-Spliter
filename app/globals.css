@@ -122,7 +122,7 @@
   }
 }
 
-. container {
+.container {
   background-image: url("/imag.avif");
   background-size: cover;
   background-position: center;
